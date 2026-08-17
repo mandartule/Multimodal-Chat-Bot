@@ -27,6 +27,8 @@ selected_model = st.sidebar.selectbox(
     index=0
 )
 st.sidebar.caption(f"Currently active: `{selected_model}`")
+st.sidebar.markdown("---")
+st.sidebar.markdown("👨‍💻 **Made by Mandar**")
 
 # Initiate chat history in session state
 if "chat_history" not in st.session_state:
@@ -55,7 +57,7 @@ if user_prompt:
     ## this system prompt is not shown to the user its only added to the list so that the model can understand the context
     ## done by unpacking the history and creating a new list by adding the first message
     response = llm.invoke(
-        input = [{"role": "system", "content": "You are a helpful assistant"}, *st.session_state.chat_history]
+        input=[{"role": "system", "content": "You are a helpful assistant"}, *st.session_state.chat_history]
     )
     assistant_response = response.content
 
